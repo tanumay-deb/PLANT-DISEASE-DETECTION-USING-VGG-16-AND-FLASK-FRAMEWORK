@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" type ="text/css" href="{{url_for('static',filename='css/style.css')}}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>PLANT-CARE | HOME</title>
+  </head>
+  <body class="bg-mn">
+    <div class="bg-home d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal" style="color:black; font-family:Verdana, Geneva, Tahoma, sans-serif;"><b><u>PLANT-CARE</u></b></h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <a class="p-2 text-dark" href="/Details"><i><b><u>Click Here To Know More</u></b></i></a>
+          </nav>
+
+        <a class="btn btn-outline-danger" href="/logout" style="font-family: monospace;color: black;"><b>LOG-OUT</b></a>
+      </div>
+
+      <div class = "col-md-5 mt-250">
+        <div class="card c">
+          <div class="card-body ">
+            <p style="font-size: 20px;font-family:sans-serif;text-align: center;"> <b>**Upload The Image Of The Leaf** </b></p>
+            <form method="post" action="/predict" enctype="multipart/form-data">
+              <center><input class="btn btn-lg btn-outline-dark fa fa-folder" type="file" name="image"></center><br>
+              <center><button class="btn btn-success btn-lg btn-block" type="submit"><b>Predict</b></button></center><br>
+              
+              {% if prediction is not none %}
+              <center><label><img src="{{ image }}" alt="Uploaded Image" width="200"><br></lable><br></center>
+              <label><h3><b><u>Prediction:</u></b></h3> <h4 style="font-family: 'Times New Roman', Times, serif; font-weight: 300; color: #4d0000;"><b>{{ prediction }}</b></h4></label><br>
+              <label><h5><b><u>SYMPTOM:</u></b></h5> <p style="font-size: medium; color:#800080; font-family: monospace; text-align: justify;"><b>{{ symptoms }}</b></p></label><br>
+              <label><h5><b><u>PREVENTION:</u></b></h5><p style="font-size: medium; color:#800080; font-family: monospace; text-align:justify;"><b>{{ prevention }}</b></p> </label>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+  </html>
